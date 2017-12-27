@@ -3,6 +3,7 @@ function ArithmeticQuiz(selector) {
   this.quizForm = $(selector.quizForm);
   this.submitAnswerButton = $(selector.submitButton);
   this.answerField = $(selector.answerField);
+  this.questionField = selector.questionField;
 }
 
 ArithmeticQuiz.prototype.startQuiz = function() {
@@ -14,7 +15,7 @@ ArithmeticQuiz.prototype.startQuiz = function() {
   } else {
     this.timer.restart();
     this.submitAnswerButton.prop('disabled', false);
-    this.questionStore.push(this.question.displayQuestion());
+    this.questionStore.push(this.question.createQuestion());
   }
 };
 
@@ -62,7 +63,7 @@ ArithmeticQuiz.prototype.init = function() {
   this.calculator = new Calculator();
   this.scoreBoard = new ScoreBoard();
   this.timer = new CountDownTimer();
-  this.question = new Question();
+  this.question = new QuestionGenerator(this.questionField);
   this.questionStore = [];
   this.addEventToFormSubmit();
   this.addEventToStartButton();
@@ -74,7 +75,8 @@ $(document).ready(function(){
     startButton: '[data-button=start]',
     quizForm: '[data-form=quiz]',
     answerField: '[data-field=answer]',
-    submitButton: '[data-button=submitanswer]'
+    submitButton: '[data-button=submitanswer]',
+    questionField: '[data-field=question]'
   }
   var quiz = new ArithmeticQuiz(selector);
   quiz.init();

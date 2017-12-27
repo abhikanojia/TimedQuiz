@@ -6,6 +6,7 @@ ScoreBoard.prototype.updateScore = function() {
 };
 
 ScoreBoard.prototype.printResponseTable = function(responseObjects) {
+  debugger;
   var table = $('<table/>').appendTo(this.resultContainer);
   var headers = $('<td>S.no.</td>\
       <td>Question</td>\

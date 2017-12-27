@@ -13,7 +13,7 @@ CountDownTimer.prototype.restart = function() {
 };
 
 CountDownTimer.prototype.reset = function() {
-  this.timerElement.text(this.end);
+  this.timerElement.text("0");
   clearInterval(this.timerId);
 };
 
