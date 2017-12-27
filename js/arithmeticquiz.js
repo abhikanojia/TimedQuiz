@@ -4,6 +4,8 @@ function ArithmeticQuiz(selector) {
   this.submitAnswerButton = $(selector.submitButton);
   this.answerField = $(selector.answerField);
   this.questionField = selector.questionField;
+  this.resultContainer = selector.resultContainer;
+  this.timerElement = $(selector.timerElement);
 }
 
 ArithmeticQuiz.prototype.startQuiz = function() {
@@ -61,8 +63,8 @@ ArithmeticQuiz.prototype.initializeDependent = function() {
 
 ArithmeticQuiz.prototype.init = function() {
   this.calculator = new Calculator();
-  this.scoreBoard = new ScoreBoard();
-  this.timer = new CountDownTimer();
+  this.scoreBoard = new ScoreBoard(this.resultContainer);
+  this.timer = new CountDownTimer(this.timerElement, this.submitAnswerButton);
   this.question = new QuestionGenerator(this.questionField);
   this.questionStore = [];
   this.addEventToFormSubmit();
@@ -76,7 +78,9 @@ $(document).ready(function(){
     quizForm: '[data-form=quiz]',
     answerField: '[data-field=answer]',
     submitButton: '[data-button=submitanswer]',
-    questionField: '[data-field=question]'
+    questionField: '[data-field=question]',
+    resultContainer: '[data-field=result]',
+    timerElement: '[data-field=timer]'
   }
   var quiz = new ArithmeticQuiz(selector);
   quiz.init();

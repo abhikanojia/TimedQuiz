@@ -1,4 +1,5 @@
-function ScoreBoard(data) {
+function ScoreBoard(resultContainer) {
+  this.resultContainer = $(resultContainer);
 }
 
 ScoreBoard.prototype.updateScore = function() {
@@ -6,16 +7,17 @@ ScoreBoard.prototype.updateScore = function() {
 };
 
 ScoreBoard.prototype.printResponseTable = function(responseObjects) {
-  debugger;
+  var _this = this;
   var table = $('<table/>').appendTo(this.resultContainer);
   var headers = $('<td>S.no.</td>\
-      <td>Question</td>\
-      <td>Answer</td>\
-      <td>Your Answer</td>');
+      <td>Number One</td>\
+      <td>Number Two</td>\
+      <td>Operator</td>\
+      <td>Answer</td>');
   table.append(headers);
   $.each(responseObjects, function(){
     var row = $('<tr/>');
-    for (var property in this) {
+    for (var property of Object.keys(this)) {
       var td = $('<td/>',{
         text: this[property]
       });
@@ -33,6 +35,5 @@ ScoreBoard.prototype.resultString = function() {
 
 ScoreBoard.prototype.init = function() {
   this.score = 0;
-  this.resultContainer = $('[data-field=result]');
 };
 
