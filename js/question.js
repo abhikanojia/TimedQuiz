@@ -32,7 +32,7 @@ Question.prototype.createQuestionObject = function(questionString, result) {
   };
 };
 
-Question.prototype.getRandomNumber = function(first_argument) {
+Question.prototype.getRandomNumber = function() {
   return Math.ceil(Math.random() * this.numbersForQuestion);
 };
 
