@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arithmetic Quiz</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+  <div class="quiz" data-div="quiz">
+    <h2>Arithmetic Quiz</h2>
+    <span class="right">
+      Timer: <span class="timer" data-field="timer">0</span>
+    </span>
+    <br>
+    <form data-form="quiz" class="form-quiz">
+      <label for="answer" data-field="question">Question will appear here</label><br>
+      <input id="answer" type="text" data-field="answer" autocomplete="off">
+      <br>
+      <input class="btn btn-primary btn-sm" type="submit" value="submit" data-button="submitanswer">
+    </form>
+    <br>
+    <button class="btn btn-primary btn-sm" data-button="start">Start</button>
+    <br>
+    <div class="result" data-field="result">
+      <h1>Time Up !!</h1>
+      <h3>Your Score</h3>
+      <span class="correct"></span>
+    </div>
+  </div>
+  <br>
+  <script type="text/javascript" src="js/timer.js"></script>
+  <script type="text/javascript" src="js/calculator.js"></script>
+  <script type="text/javascript" src="js/question.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/scoreboard.js"></script>
+</body>
+</html>

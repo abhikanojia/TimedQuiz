@@ -1,0 +1,51 @@
+label, input {
+  display: block;
+}
+.quiz {
+  margin: 50px auto auto;
+  display: block;
+  border: 1px solid black;
+  padding: 20px 30px;
+  width: 60%;
+}
+
+.form-quiz{
+  display: none;
+}
+
+.btn{
+  margin: 0 auto;
+  display: block;
+  border: none;
+  border-radius: 6px;
+}
+.btn:hover{
+  cursor: pointer;
+}
+
+.btn-sm{
+  width: 25%;
+  height: 40px;
+}
+
+.btn-primary{
+  color: white;
+  background: #337ab7;
+  border-color: #2e6da4;
+}
+.btn-primary:hover{
+  background: #2e6da4;
+}
+
+.right{
+  float: right;
+}
+#answer{
+  width: 90%;
+}
+.result{
+  display: none;
+}
+table, th, td{
+  border: 1px solid black;
+}
