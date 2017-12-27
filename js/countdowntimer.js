@@ -1,8 +1,4 @@
-function CountDownTimer(data) {
-  this.end = data.end;
-  this.start = data.start;
-  this.timerElement = data.timerElement;
-  this.submitButton = data.submitButton;
+function CountDownTimer() {
 }
 
 CountDownTimer.prototype.updateTime = function(value) {
@@ -17,7 +13,7 @@ CountDownTimer.prototype.restart = function() {
 };
 
 CountDownTimer.prototype.reset = function() {
-  this.timerElement.text("0");
+  this.timerElement.text(this.end);
   clearInterval(this.timerId);
 };
 
@@ -25,7 +21,7 @@ CountDownTimer.prototype.stop = function() {
   clearInterval(this.timerId);
 };
 
-CountDownTimer.prototype.init = function() {
+CountDownTimer.prototype.startTimer = function() {
   var _this = this;
   var startFrom = this.start;
   this.timerId = setInterval(function(){
@@ -37,12 +33,10 @@ CountDownTimer.prototype.init = function() {
   }, 1000);
 };
 
-
-// var timerOptions = {
-//     end: 0,
-//     start: 10,
-//     timerElement: $('[data-field=timer]')
-//   };
-
-// var timer = new CountDownTimer(timerOptions);
-// console.log(timer);
+CountDownTimer.prototype.init = function() {
+  this.end = 0;
+  this.start = 10;
+  this.timerElement = $('[data-field=timer]');
+  this.submitButton = $('[data-button=submitanswer]');
+  this.startTimer();
+};

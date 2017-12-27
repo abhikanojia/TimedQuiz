@@ -1,11 +1,8 @@
 function ScoreBoard(data) {
-  this.resultContainer = data.resultContainer;
 }
 
-ScoreBoard.prototype.updateScore = function(increment) {
-  if(increment) {
-    this.score++;
-  }
+ScoreBoard.prototype.updateScore = function() {
+  this.score++;
 };
 
 ScoreBoard.prototype.printResponseTable = function(responseObjects) {
@@ -15,7 +12,6 @@ ScoreBoard.prototype.printResponseTable = function(responseObjects) {
       <td>Answer</td>\
       <td>Your Answer</td>');
   table.append(headers);
-
   $.each(responseObjects, function(){
     var row = $('<tr/>');
     for (var property in this) {
@@ -26,17 +22,16 @@ ScoreBoard.prototype.printResponseTable = function(responseObjects) {
     }
     row.appendTo(table);
   });
+  this.resultContainer.show();
+  this.resultContainer.append(this.resultString());
 };
 
 ScoreBoard.prototype.resultString = function() {
   return " Correct Answers: " + this.score;
 };
 
-ScoreBoard.prototype.displayResult = function(container) {
-  container.text(this.resultString());
-};
-
 ScoreBoard.prototype.init = function() {
   this.score = 0;
+  this.resultContainer = $('[data-field=result]');
 };
 
