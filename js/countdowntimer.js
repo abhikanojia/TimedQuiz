@@ -30,7 +30,7 @@ CountDownTimer.prototype.startTimer = function() {
       _this.submitButton.trigger('click');
     }
     _this.updateTime(startFrom--);
-  }, 1000);
+  }, this.timeInterval);
 };
 
 CountDownTimer.prototype.init = function() {
@@ -38,5 +38,6 @@ CountDownTimer.prototype.init = function() {
   this.start = 10;
   this.timerElement = $('[data-field=timer]');
   this.submitButton = $('[data-button=submitanswer]');
+  this.timeInterval = 1000;
   this.startTimer();
 };
