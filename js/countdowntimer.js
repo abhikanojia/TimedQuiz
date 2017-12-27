@@ -39,4 +39,5 @@ CountDownTimer.prototype.init = function() {
   this.timerElement = $('[data-field=timer]');
   this.submitButton = $('[data-button=submitanswer]');
   this.timeInterval = 1000;
+  this.startTimer();
 };
