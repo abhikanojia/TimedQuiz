@@ -9,7 +9,7 @@ function ArithmeticQuiz(selector) {
 }
 
 ArithmeticQuiz.prototype.startQuiz = function() {
-  if(this.question.number == this.question.noOfQuestions) {
+  if(this.questionGenerator.number == this.questionGenerator.noOfQuestions) {
     this.submitAnswerButton.prop('disabled', true);
     this.timer.reset();
     this.quizForm.hide();
@@ -57,7 +57,7 @@ ArithmeticQuiz.prototype.displayResult = function() {
 };
 
 ArithmeticQuiz.prototype.initializeDependent = function() {
-  this.question.init();
+  this.questionGenerator.init();
   this.scoreBoard.init();
 };
 
@@ -65,7 +65,7 @@ ArithmeticQuiz.prototype.init = function() {
   this.calculator = new Calculator();
   this.scoreBoard = new ScoreBoard(this.resultContainer);
   this.timer = new CountDownTimer(this.timerElement, this.submitAnswerButton);
-  this.question = new QuestionGenerator(this.questionField);
+  this.questionGenerator = new QuestionGenerator(this.questionField);
   this.questionStore = [];
   this.addEventToFormSubmit();
   this.addEventToStartButton();
