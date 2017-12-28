@@ -77,7 +77,7 @@ $(document).ready(function(){
     startButton: '[data-button=start]',
     quizForm: '[data-form=quiz]',
     answerField: '[data-field=answer]',
-    submitButton: '[data-button=submitanswer]',
+    submitButton: '[data-button=submit-answer]',
     questionField: '[data-field=question]',
     resultContainer: '[data-field=result]',
     timerElement: '[data-field=timer]'
