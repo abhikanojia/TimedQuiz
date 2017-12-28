@@ -1,4 +1,4 @@
-function ArithmeticQuiz(selector) {
+function ArithmeticQuiz(selector, timerOptions) {
   this.startButton = $(selector.startButton);
   this.quizForm = $(selector.quizForm);
   this.submitAnswerButton = $(selector.submitButton);
@@ -6,6 +6,7 @@ function ArithmeticQuiz(selector) {
   this.questionField = selector.questionField;
   this.resultContainer = selector.resultContainer;
   this.timerElement = $(selector.timerElement);
+  this.timerOptions = timerOptions;
 }
 
 ArithmeticQuiz.prototype.startQuiz = function() {
@@ -17,7 +18,7 @@ ArithmeticQuiz.prototype.startQuiz = function() {
   } else {
     this.timer.restart();
     this.submitAnswerButton.prop('disabled', false);
-    this.questionStore.push(this.question.createQuestion());
+    this.questionStore.push(this.questionGenerator.createQuestion());
   }
 };
 
@@ -42,8 +43,8 @@ ArithmeticQuiz.prototype.addEventToFormSubmit = function() {
 };
 
 ArithmeticQuiz.prototype.validateAnswer = function(answer) {
-  var questionObject = this.questionStore[this.question.number - 1];
-  if(this.question.checkAnswer(questionObject, answer)) {
+  var questionObject = this.questionStore[this.questionGenerator.number - 1];
+  if(questionObject.checkAnswer(answer)) {
     this.scoreBoard.updateScore();
   }
 };
@@ -59,6 +60,7 @@ ArithmeticQuiz.prototype.displayResult = function() {
 ArithmeticQuiz.prototype.initializeDependent = function() {
   this.questionGenerator.init();
   this.scoreBoard.init();
+  this.timer.init(this.timerOptions);
 };
 
 ArithmeticQuiz.prototype.init = function() {
@@ -69,7 +71,7 @@ ArithmeticQuiz.prototype.init = function() {
   this.questionStore = [];
   this.addEventToFormSubmit();
   this.addEventToStartButton();
-  this.initializeDependent()
+  this.initializeDependent();
 };
 
 $(document).ready(function(){
@@ -82,6 +84,11 @@ $(document).ready(function(){
     resultContainer: '[data-field=result]',
     timerElement: '[data-field=timer]'
   }
-  var quiz = new ArithmeticQuiz(selector);
+  var timerOptions = {
+    end: 0,
+    start: 10,
+    timeInterval: 1000
+  }
+  var quiz = new ArithmeticQuiz(selector, timerOptions);
   quiz.init();
 });

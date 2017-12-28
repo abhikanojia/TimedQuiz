@@ -21,10 +21,6 @@ QuestionGenerator.prototype.displayQuestion = function(question) {
   this.questionField.text(question.toString());
 };
 
-QuestionGenerator.prototype.checkAnswer = function(questionObject, userAnswer) {
-  return questionObject.result == parseInt(userAnswer);
-};
-
 QuestionGenerator.prototype.getRandomNumber = function() {
   return Math.ceil(Math.random() * this.numbersForQuestion);
 };

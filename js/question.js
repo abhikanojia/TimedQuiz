@@ -10,7 +10,6 @@ Question.prototype.toString = function() {
   return this.numberOne.toString().concat(" ", this.operator, " ", this.numberTwo.toString());
 };
 
-Question.prototype.checkAnswer = function(questionObject, userAnswer) {
-  questionObject.usersAnswer = userAnswer;
-  return questionObject.correctAnswer == parseInt(userAnswer);
+Question.prototype.checkAnswer = function(userAnswer) {
+  return this.result == parseInt(userAnswer);
 };

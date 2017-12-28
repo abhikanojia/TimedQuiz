@@ -11,7 +11,7 @@ CountDownTimer.prototype.restart = function() {
   if(this.timerId) {
     clearInterval(this.timerId);
   }
-  this.init();
+  this.startTimer();
 };
 
 CountDownTimer.prototype.reset = function() {
@@ -35,9 +35,8 @@ CountDownTimer.prototype.startTimer = function() {
   }, this.timeInterval);
 };
 
-CountDownTimer.prototype.init = function() {
-  this.end = 0;
-  this.start = 10;
-  this.timeInterval = 1000;
-  this.startTimer();
+CountDownTimer.prototype.init = function(timerOptions) {
+  this.end = timerOptions.end;
+  this.start = timerOptions.start;
+  this.timeInterval = timerOptions.timeInterval;
 };
